@@ -1,11 +1,12 @@
 #[test]
 fn public_api() {
+    let version = "1.74.0-nightly";
     // Install a compatible nightly toolchain if it is missing
-    rustup_toolchain::install(public_api::MINIMUM_NIGHTLY_RUST_VERSION).unwrap();
+    rustup_toolchain::install(version).unwrap();
 
     // Build rustdoc JSON
     let rustdoc_json = rustdoc_json::Builder::default()
-        .toolchain(public_api::MINIMUM_NIGHTLY_RUST_VERSION)
+        .toolchain(version)
         .features(["runtime-tokio-hyper"])
         .build()
         .unwrap();
